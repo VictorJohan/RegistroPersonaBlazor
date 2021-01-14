@@ -12,5 +12,9 @@ namespace RegistroPersonaBlazor.DAL
         public DbSet<Personas> Personas { get; set; }
         
         public Contexto(DbContextOptions<Contexto> options) : base(options) { }
+
+        public Contexto()
+        {
+        }
     }
 }
