@@ -23,9 +23,11 @@ namespace RegistroPersonaBlazor.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Cedula")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Direccion")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("FechaNacimiento")
@@ -36,6 +38,7 @@ namespace RegistroPersonaBlazor.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Telefono")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("PersonaId");

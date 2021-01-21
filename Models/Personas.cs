@@ -12,11 +12,13 @@ namespace RegistroPersonaBlazor.Models
         public int PersonaId { get; set; }
         [Required(ErrorMessage ="Es obligatorio introducir un nombre.")]
         public string Nombres { get; set; }
-        [Range(minimum:10, maximum:10, ErrorMessage = "Número telefónico no válido.")]
+        [Required(ErrorMessage = "Es obligatorio introducir un número telefónico .")]
         public string Telefono { get; set; }
-        [Range(minimum:8, maximum:8, ErrorMessage = "Cédula no válida")]
+        [Required(ErrorMessage = "Es obligatorio introducir una cédula.")]
         public string Cedula { get; set; }
+        [Required(ErrorMessage = "Es obligatorio introducir una dirección.")]
         public string Direccion { get; set; }
+        [Required(ErrorMessage = "Es obligatorio introducir una fecha de nacimiento")]
         public DateTime FechaNacimiento { get; set; } = DateTime.Now;
 
 

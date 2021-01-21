@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using RegistroPersonaBlazor.BLL;
 using RegistroPersonaBlazor.DAL;
 using RegistroPersonaBlazor.Data;
 using System;
@@ -31,10 +32,10 @@ namespace RegistroPersonaBlazor
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
-            services.AddSingleton<WeatherForecastService>();
             services.AddDbContext<Contexto>(options =>
          options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
             services.AddBlazoredToast();
+            services.AddTransient<PersonasBLL>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

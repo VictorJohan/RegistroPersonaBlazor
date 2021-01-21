@@ -13,8 +13,5 @@ namespace RegistroPersonaBlazor.DAL
         
         public Contexto(DbContextOptions<Contexto> options) : base(options) { }
 
-        public Contexto()
-        {
-        }
     }
 }

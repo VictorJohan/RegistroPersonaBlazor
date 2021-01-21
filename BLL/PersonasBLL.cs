@@ -11,7 +11,14 @@ namespace RegistroPersonaBlazor.BLL
 {
     public class PersonasBLL
     {
-        public static async Task<bool> Guardar(Personas persona)
+        public Contexto contexto { get; set; }
+
+        public PersonasBLL(Contexto contexto)
+        {
+            this.contexto = contexto;
+        }
+
+        public async Task<bool> Guardar(Personas persona)
         {
             if (!await Existe(persona.PersonaId))
                 return await Insertar(persona);
@@ -19,9 +26,8 @@ namespace RegistroPersonaBlazor.BLL
                 return await Modificar(persona);
         }
 
-        public static async Task<bool> Existe(int id)
+        public async Task<bool> Existe(int id)
         {
-            Contexto contexto = new Contexto();
             bool ok = false;
             try
             {
@@ -32,17 +38,12 @@ namespace RegistroPersonaBlazor.BLL
 
                 throw;
             }
-            finally
-            {
-                await contexto.DisposeAsync();
-            }
-
+            
             return ok;
         }
 
-        private static async Task<bool> Insertar(Personas persona)
+        private async Task<bool> Insertar(Personas persona)
         {
-            Contexto contexto = new Contexto();
             bool ok = false;
 
             try
@@ -55,17 +56,12 @@ namespace RegistroPersonaBlazor.BLL
 
                 throw;
             }
-            finally
-            {
-                await contexto.DisposeAsync();
-            }
 
             return ok;
         }
 
-        private static async Task<bool> Modificar(Personas persona)
+        private async Task<bool> Modificar(Personas persona)
         {
-            Contexto contexto = new Contexto();
             bool ok = false;
 
             try
@@ -78,17 +74,12 @@ namespace RegistroPersonaBlazor.BLL
 
                 throw;
             }
-            finally
-            {
-               await contexto.DisposeAsync();
-            }
 
             return ok;
         }
 
-        public static async Task<Personas> Buscar(int id)
-        {
-            Contexto contexto = new Contexto();
+        public async Task<Personas> Buscar(int id)
+        {  
             Personas persona;
 
             try
@@ -100,17 +91,12 @@ namespace RegistroPersonaBlazor.BLL
 
                 throw;
             }
-            finally
-            {
-                await contexto.DisposeAsync();
-            }
 
             return persona;
         }
 
-        public static async Task<bool> Eliminar(int id)
+        public async Task<bool> Eliminar(int id)
         {
-            Contexto contexto = new Contexto();
             bool ok = false;
 
             try
@@ -127,17 +113,12 @@ namespace RegistroPersonaBlazor.BLL
 
                 throw;
             }
-            finally
-            {
-                await contexto.DisposeAsync();
-            }
 
             return ok;
         }
 
-        public static async Task<List<Personas>> GetPersonas()
+        public async Task<List<Personas>> GetPersonas()
         {
-            Contexto contexto = new Contexto();
             List<Personas> lista = new List<Personas>();
 
             try
@@ -149,17 +130,13 @@ namespace RegistroPersonaBlazor.BLL
 
                 throw;
             }
-            finally
-            {
-                await contexto.DisposeAsync();
-            }
+            
 
             return lista;
         }
 
-        public static async Task<List<Personas>> GetPersonas(Expression<Func<Personas, bool>> criterio)
+        public async Task<List<Personas>> GetPersonas(Expression<Func<Personas, bool>> criterio)
         {
-            Contexto contexto = new Contexto();
             List<Personas> lista = new List<Personas>();
 
             try
@@ -170,10 +147,6 @@ namespace RegistroPersonaBlazor.BLL
             {
 
                 throw;
-            }
-            finally
-            {
-               await contexto.DisposeAsync();
             }
 
             return lista;

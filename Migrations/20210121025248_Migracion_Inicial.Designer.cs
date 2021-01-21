@@ -9,7 +9,7 @@ using RegistroPersonaBlazor.DAL;
 namespace RegistroPersonaBlazor.Migrations
 {
     [DbContext(typeof(Contexto))]
-    [Migration("20210114215746_Migracion_Inicial")]
+    [Migration("20210121025248_Migracion_Inicial")]
     partial class Migracion_Inicial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,9 +25,11 @@ namespace RegistroPersonaBlazor.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Cedula")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Direccion")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("FechaNacimiento")
@@ -38,6 +40,7 @@ namespace RegistroPersonaBlazor.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Telefono")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("PersonaId");
