@@ -11,7 +11,7 @@ namespace RegistroPersonaBlazor.BLL
 {
     public class PersonasBLL
     {
-        public Contexto contexto { get; set; }
+        private Contexto contexto { get; set; }
 
         public PersonasBLL(Contexto contexto)
         {
@@ -151,5 +151,7 @@ namespace RegistroPersonaBlazor.BLL
 
             return lista;
         }
+
+        
     }
 }
