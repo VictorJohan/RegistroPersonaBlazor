@@ -35,6 +35,8 @@ namespace RegistroPersonaBlazor
             services.AddDbContext<Contexto>(options =>
          options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")));
             services.AddBlazoredToast();
+
+            //Inyectando BLL Personas
             services.AddTransient<PersonasBLL>();
         }
 
